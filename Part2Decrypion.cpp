@@ -15,8 +15,10 @@ char *dTrans(string cipher, int key2, int arr[]){
 	string cipher1 = ""; 
 	col = key2;
 	int length=cipher.size();
+	char *c = new char[length];
 	int row =ceil((float)length/(float)col); 	
 	char matrix[row][col]; 
+	
 	for (int j=0,k=0; j<col; j++) 
 	{ 
 		for (int i=0; i<row;i++ ) 
@@ -24,34 +26,15 @@ char *dTrans(string cipher, int key2, int arr[]){
 				matrix[i][j] = cipher[k++];  
 		} 
 	} 
-//	for(int i=0; i<row; i++){			
-//		for(int j=0; j<col; j++){
-//			cout<<matrix[i][j]<<' ';
-//	}
-//	cout<<endl;
-//	}
-//	cout<<endl;
+
 	char mat[row][col];
 	for(int i=0;i<row;i++){
 		for(j=0;j<col;j++){
 			mat[j][arr[i]-1]=matrix[j][i];
 		}
 	}
-//		for(int i=0; i<row; i++){			
-//		for(int j=0; j<col; j++){
-//			cout<<mat[i][j]<<' ';
-//		}
-//		cout<<endl;
-//	}
-//	cout<<endl;
-	char *c = new char[length];
-	int k=0;
-	for(int i=0;i<row;i++){
-		for(j=0;j<col;j++){
-			c[k] = mat[i][j];	
-			k++;
-		}
-	}
+	
+	memcpy(c,mat,sizeof(int)*length);
 	cout<<endl;
 	return c;
 }
